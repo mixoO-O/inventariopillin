@@ -12,12 +12,12 @@
       $this->username = $username;
       $this->password = md5($password);
 
-      $sql = "SELECT id, username, password, rank
+      $sql = "SELECT id, user, pass, rank
               FROM users
-              WHERE username = '$this->username'
-              AND password = '$this->password'";
+              WHERE user = '$this->username'
+              AND pass = '$this->password'";
 
-      $data = $man->free_query();
+      $data = $man->free_query($sql);
 
       if(mysqli_num_rows($data) > 0){
         $datos = mysqli_fetch_assoc($data);
@@ -25,7 +25,7 @@
         $this->id = $datos['id'];
         $this->rank = $datos['rank'];
 
-        return = ['username' => $this->username, 'rank' => $this->rank, 'id' => $this->id];
+        return ['username' => $this->username, 'rank' => $this->rank, 'id' => $this->id];
       }else{
         return false;
       }
