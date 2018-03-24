@@ -1,18 +1,11 @@
 <?php
 	class Mantenedor{
-		private $host;
-		private $user;
-		private $password;
-		private $db;
+		private $host = "localhost";
+		private $user = "root";
+		private $password = "";
+		private $db = "inventariopillin";
 		private $link;
 		private $getSql;
-
-		public function __construct($host, $user, $password, $db){
-			$this->host = $host;
-			$this->user = $user;
-			$this->password = $password;
-			$this->db = $db;
-		}
 
 		# Para PHP version < 5.0
 
