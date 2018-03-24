@@ -8,11 +8,19 @@
 
   <link rel="stylesheet" href="../views/public/css/bootstrap.min.css">
   <link rel="stylesheet" href="../views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <style>
+    .fa-click{
+      cursor: pointer;
+    }
+
+    .lista_filtros > li{
+      display: inline;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <?php require_once('../views/includes/menu.php');
-    ?>
+    <?php require_once('../views/includes/menu.php'); ?>
     <h1 class="text-center">Descargar Inventario</h1>
   </header>
 
@@ -43,22 +51,83 @@
           </div>
         </div>
 
-        <h5 class="card-title">Filtro por Categoría</h5>
+        <h5 class="card-title">Filtros por Categorías / Tiendas</h5>
 
         <div class="row">
-          <div class="col-md-6 col-sm-11">
+          <div class="col-md-5 col-sm-11">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">CATEGORÍAS</span>
               </div>
               <select id="categorias" class="form-control">
                 <option value="TODAS">TODAS</option>
+                <?php foreach ($categorias as $key => $value) { ?>
+                  <option value="<?=$value['id']?>"><?=$value['nombre']?></option>
+                <?php } ?>
               </select>
             </div>
           </div>
 
-          <div class="col-md-1 col-sm-1">
-            <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+          <div class="col-md-1 col-sm-1 mb-3 text-center">
+            <i class="fa fa-plus-circle fa-2x fa-click" id="addCategoria" aria-hidden="true"></i>
+          </div>
+
+          <div class="col-md-5 col-sm-11">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">TIENDAS</span>
+              </div>
+              <select id="tiendas" class="form-control">
+                <option value="TODAS">TODAS</option>
+                <?php foreach ($tiendas as $key => $value) { ?>
+                  <option value="<?=$value['id']?>"><?=$value['nombre']?></option>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-1 col-sm-1 mb-3 text-center">
+            <i class="fa fa-plus-circle fa-2x fa-click" id="addTienda" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="row text-muted">
+          <div class="col-md-6 col-sm-12 mb-3">
+            <h5 class="card-title">Categorías seleccionadas</h5>
+            <ul class="lista_filtros" id="categorias_seleccionadas"></ul>
+          </div>
+
+          <div class="col-md-6 col-sm-12 mb-3">
+            <h5 class="card-title">Tiendas seleccionadas</h5>
+            <ul class="lista_filtros" id="tiendas_seleccionadas"></ul>
+          </div>
+        </div>
+
+        <h5 class="card-title">Filtro por Usuarios</h5>
+        <div class="row">
+          <div class="col-md-5 col-sm-12 mb-3">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">USUARIOS</span>
+              </div>
+              <select id="usuarios" class="form-control">
+                <option value="TODOS">TODOS</option>
+                <?php foreach ($usuarios as $key => $value) { ?>
+                  <option value="<?=$value['id']?>"><?=$value['nombre']?></option>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-1 col-sm-1 mb-3 text-center">
+            <i class="fa fa-plus-circle fa-2x fa-click" id="addUsuario" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="row text-muted">
+          <div class="col-md-6 col-sm-12 mb-3">
+            <h5 class="card-title">Usuarios seleccionados</h5>
+            <ul class="lista_filtros" id="usuarios_seleccionados"></ul>
           </div>
         </div>
 

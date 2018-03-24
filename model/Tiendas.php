@@ -12,7 +12,7 @@
 
       $i = 0;
       while($row = mysqli_fetch_assoc($exe)){
-        $tiendas = ['id' => $row['id'], 'nombre' => $row['name']];
+        $tiendas[$i] = ['id' => $row['id'], 'nombre' => $row['name']];
         $i++;
       }
 

@@ -31,9 +31,9 @@
       }
     }
 
-    public function getUsers(){
+    public function getUsuarios(){
       $users = [];
-      $man = new Mantendor();
+      $man = new Mantenedor();
 
       $sql = "SELECT id, user
               FROM users";
