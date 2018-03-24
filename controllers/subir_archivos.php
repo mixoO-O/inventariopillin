@@ -7,7 +7,7 @@
     require_once('menu.php');
 
     # Mostrar vista
-    include_once('../views/home.php');
+    include_once('../views/subir_archivo.php');
   }else{
     Header('Location: salir.php');
   }

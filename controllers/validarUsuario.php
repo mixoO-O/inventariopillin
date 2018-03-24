@@ -9,7 +9,6 @@
 
     $data_user = $user->validarUsuario($username, $password);
 
-
     if($data_user){
       $_SESSION['user'] = $data_user['username'];
       $_SESSION['rank'] = $data_user['rank'];
