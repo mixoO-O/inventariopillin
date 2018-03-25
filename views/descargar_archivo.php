@@ -17,12 +17,24 @@
     .lista_filtros > li{
       display: inline;
     }
+
+    .thead{
+      background-color:#0F6CAE;
+      color:#FFFFFF;
+    }
+
+    @media (min-width: 992px){
+      .modal-lg {
+        max-width: 980px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
   <header>
     <?php require_once('../views/includes/menu.php'); ?>
-    <h1 class="text-center">Verificar Inventario</h1>
+    <h1 class="text-center">Reporte Inventario</h1>
   </header>
 
   <section class="container">
@@ -135,7 +147,71 @@
       </div>
 
       <div class="card-footer text-muted text-center">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ver">VER</button>
         <button type="button" class="btn btn-success" id="btnDescargar">DESCARGAR</button>
+      </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" id="ver" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" >
+          <div class="modal-header">
+            <h5 class="modal-title" id="ver_modal">Datos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <header>
+                <thead>
+                  <th class="col-md-2">Periodo:</th>
+                  <th class="col-md-2">$fecha</th>
+                  <th class="col-md-2"></th>
+                  <th class="col-md-2"></th>
+                  <th class="col-md-2"></th>
+                  <th class="col-md-2"></th>
+                </thead>
+                <tr>
+                  <td class="col-md-2">Categoría:</td>
+                  <td class="col-md-2">$categorias</td>
+                  <td class="col-md-2"></td>
+                  <td class="col-md-2"></td>
+                  <td class="col-md-2"></td>
+                  <td class="col-md-2"></td>
+                </tr>
+                <tr>
+                  <td class="col-md-2">Tiendas:</td>
+                  <td class="col-md-2">$tiendas</td>
+                  <td class="col-md-2"></td>
+                  <td class="col-md-2"></td>
+                  <td class="col-md-2"></td>
+                  <td class="col-md-2"></td>
+                </tr>
+                <tr>
+                  <td>Usuarios:</td>
+                  <td>$usuarios</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </header>
+              <tr></tr>
+              <tr>
+                <th>Codigo Producto</th>
+                <th>Descripción</th>
+                <th>Tienda</th>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Total Uds</th>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -162,7 +238,7 @@
           validator = true;
 
       $("#categorias_seleccionadas li").each(function(){
-        if( $(this).text() == "TODAS" || name_select == "TODAS" && $(this).text() != "TODAS" || $(this).text() == name_select){
+        if( $(this).text() == "TODAS" || name_select == "TODAS" && $(this).text() != "TODAS" || $(this).text() == (name_select + " | ")){
           validator = false;
           return false;
         }
@@ -181,7 +257,7 @@
           validator = true;
 
       $("#tiendas_seleccionadas li").each(function(){
-        if( $(this).text() == "TODAS" || name_select == "TODAS" && $(this).text() != "TODAS" || $(this).text() == name_select){
+        if( $(this).text() == "TODAS" || name_select == "TODAS" && $(this).text() != "TODAS" || $(this).text() == (name_select + " | ")){
           validator = false;
           return false;
         }
@@ -200,7 +276,7 @@
           validator = true;
 
       $("#usuarios_seleccionados li").each(function(){
-        if( $(this).text() == "TODOS" || name_select == "TODOS" && $(this).text() != "TODOS" || $(this).text() == name_select){
+        if( $(this).text() == "TODOS" || name_select == "TODOS" && $(this).text() != "TODOS" || $(this).text() == (name_select + " | ")){
           validator = false;
           return false;
         }
@@ -209,7 +285,6 @@
       if(validator) $("#usuarios_seleccionados").append(object);
     });
 
-    // Boton exportar
     $("#btnDescargar").click(function(){
       var desde = $("#desde").val(),
           hasta = $("#hasta").val(),

@@ -51,11 +51,11 @@
     public function getUserName($id){
       $man = new Mantenedor();
 
-      $sql = "SELECT nombre FROM users WHERE id = '$id'";
+      $sql = "SELECT nombre FROM usuarios WHERE id = '$id'";
       $exe = $man->free_query($sql);
 
       $data = mysqli_fetch_assoc($exe);
 
-      return $data['user'];
+      return $data['nombre'];
     }
   }

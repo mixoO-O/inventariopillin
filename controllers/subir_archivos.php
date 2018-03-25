@@ -6,6 +6,11 @@
     # Incluir menú
     require_once('menu.php');
 
+    # Traer tiendas
+    require_once('../model/Tiendas.php');
+    $t = new Tiendas();
+    $tiendas = $t->getTiendas();
+
     # Mostrar vista
     include_once('../views/subir_archivo.php');
   }else{

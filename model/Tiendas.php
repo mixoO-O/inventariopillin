@@ -27,6 +27,6 @@
 
       $data = mysqli_fetch_assoc($exe);
 
-      return $data['name'];
+      return $data['nombre'];
     }
   }
