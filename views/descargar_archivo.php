@@ -181,6 +181,7 @@
       </div>
     </div>
 
+  <hr>
   </section>
 
   <script src="../views/public/js/jquery-3.3.1.min.js"></script>
@@ -223,7 +224,7 @@
         usuarios_id},
         function(data){
           $("#cuerpo_tabla").html('');
-          
+
           var q = data.length,
               codigo_tmp = "";
               total_uds_tmp = "",

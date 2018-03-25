@@ -19,7 +19,7 @@
 
 				<form class="login100-form validate-form" action="controllers/validarUsuario.php" method="POST">
 					<span class="login100-form-title">
-						LOGO KT2
+						INVENTARIO PILLIN
 					</span>
 
 					<div class="wrap-input100 validate-input">
