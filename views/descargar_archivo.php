@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="../views/public/css/bootstrap.min.css">
   <link rel="stylesheet" href="../views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../views/public/css/bootstrap-datepicker.css">
   <style>
     .fa-click{
       cursor: pointer;
@@ -140,11 +141,105 @@
 
   </section>
 
-  <footer>
-
-  </footer>
-
   <script src="../views/public/js/jquery-3.2.1.slim.min.js"></script>
   <script src="../views/public/js/bootstrap.min.js"></script>
+  <script src="../views/public/js/bootstrap-datepicker.js"></script>
+  <script src="../views/public/js/bootstrap-datepicker.es.js"></script>
+
+
+  <script>
+    // Add calendar
+    $(".calendar").datepicker({format: 'yyyy-mm-dd', language: 'es', autoclose: true});
+
+    // Events
+    // Agregar Categoria
+    $("#addCategoria").click(function(){
+      var id_select = $("#categorias option:selected").val(),
+          name_select = $("#categorias option:selected").text(),
+          object = '<li id="li_categorias_'+id_select+'" onclick="deleteLi(\''+id_select+'\', \'categorias_seleccionadas\')">'
+                  +'<a href="#">'+name_select+'</a>'
+                  +' | </li>',
+          validator = true;
+
+      $("#categorias_seleccionadas li").each(function(){
+        if( $(this).text() == "TODAS" || name_select == "TODAS" && $(this).text() != "TODAS" || $(this).text() == name_select){
+          validator = false;
+          return false;
+        }
+      });
+
+      if(validator) $("#categorias_seleccionadas").append(object);
+    });
+
+    // Agregar Tienda
+    $("#addTienda").click(function(){
+      var id_select = $("#tiendas option:selected").val(),
+          name_select = $("#tiendas option:selected").text(),
+          object = '<li id="li_tiendas_'+id_select+'" onclick="deleteLi(\''+id_select+'\', \'tiendas_seleccionadas\')">'
+                  +'<a href="#">'+name_select+'</a>'
+                  +' | </li>',
+          validator = true;
+
+      $("#tiendas_seleccionadas li").each(function(){
+        if( $(this).text() == "TODAS" || name_select == "TODAS" && $(this).text() != "TODAS" || $(this).text() == name_select){
+          validator = false;
+          return false;
+        }
+      });
+
+      if(validator) $("#tiendas_seleccionadas").append(object);
+    });
+
+    // Agregar Usuarios
+    $("#addUsuario").click(function(){
+      var id_select = $("#usuarios option:selected").val(),
+          name_select = $("#usuarios option:selected").text(),
+          object = '<li id="li_usuarios_'+id_select+'" onclick="deleteLi(\''+id_select+'\', \'usuarios_seleccionados\')">'
+                  +'<a href="#">'+name_select+'</a>'
+                  +' | </li>',
+          validator = true;
+
+      $("#usuarios_seleccionados li").each(function(){
+        if( $(this).text() == "TODOS" || name_select == "TODOS" && $(this).text() != "TODOS" || $(this).text() == name_select){
+          validator = false;
+          return false;
+        }
+      });
+
+      if(validator) $("#usuarios_seleccionados").append(object);
+    });
+
+    // Boton exportar
+    $("#btnDescargar").click(function(){
+      var desde = $("#desde").val(),
+          hasta = $("#hasta").val(),
+          categorias_id = "",
+          tiendas_id = "",
+          usuarios_id = "";
+
+      $('#categorias_seleccionadas li').each(function(){
+        let id = $(this).attr('id').split("_");
+        categorias_id += id[2] + ",";
+      });
+
+      $('#tiendas_seleccionadas li').each(function(){
+        let id = $(this).attr('id').split("_");
+        tiendas_id += id[2] + ",";
+      });
+
+      $('#usuarios_seleccionados li').each(function(){
+        let id = $(this).attr('id').split("_");
+        usuarios_id += id[2] + ",";
+      });
+
+      location.href = "descarga.php?desde="+desde+"&hasta="+hasta+"&categorias_id="+categorias_id+"&tiendas_id="+tiendas_id+"&usuarios_id="+usuarios_id;
+    });
+
+    // Functions
+    var deleteLi = function(id, where){
+      var _where = where.split('_');
+      $("#li_"+_where[0]+"_"+id).remove();
+    }
+  </script>
 </body>
 </html>
