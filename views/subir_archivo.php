@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Subir Base</title>
     <link rel="stylesheet" href="../views/public/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
   <body>
     <header>
@@ -25,7 +26,7 @@
           ¡ERROR EN SUBIDA, FAVOR VERIFIQUE EL ARCHIVO!
         </div>
       <?php } } ?>
-      
+
       <h1 class="text-center">Subir Inventario</h1>
 
       <form action='../controllers/importe_base.php' method='post' enctype="multipart/form-data">
@@ -52,6 +53,7 @@
                     <span class="input-group-text">TIENDA</span>
                   </div>
                   <select id="tienda" name="tienda" class="form-control" required>
+                      <option value="" disabled selected>SELECCIONE</option>
                     <?php foreach ($tiendas as $key => $value) { ?>
                       <option value="<?=$value['id']?>"><?=$value['nombre']?></option>
                     <?php } ?>

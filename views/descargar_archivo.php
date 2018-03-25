@@ -7,7 +7,7 @@
   <title>Reporte Inventario</title>
 
   <link rel="stylesheet" href="../views/public/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../views/public/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../views/public/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../views/public/css/bootstrap-datepicker.css">
   <style>
     .fa-click{
