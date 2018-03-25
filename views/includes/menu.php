@@ -1,24 +1,20 @@
-<?php
-  if(isset($_SESSION['user']) && isset($_SESSION['id'])){
-  }else{
-    session_start();
-  }
-?>
-
 <nav class="navbar header-navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="../views/home.php">Pillin</a>
+  <a class="navbar-brand" href="../controllers/home.php">Pillin</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="../views/subir_archivo.php">Subir Archivo</a>
-      </li>
-      <?php if($_SESSION['rank']>0) {?>
+      <!--  if($_SESSION['rank']>0) {
         <li class="nav-item">
           <a class="nav-link" href="../views/descargar_archivo.php">Descargar Archivo</a>
+        </li>
+       } -->
+
+      <?php foreach ($menu as $value) { ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?=$value['link']?>"><?=$value['nombre']?></a>
         </li>
       <?php } ?>
     </ul>
