@@ -8,10 +8,26 @@
   <body>
     <header>
       <?php require_once('../views/includes/menu.php'); ?>
-      <h1 class="text-center">Subir Inventario</h1>
+
     </header>
 
     <section class="container">
+      <?php
+        if(isset($_GET['id'])){
+        if($_GET['id'] == 1){ ?>
+        <br>
+        <div class="alert alert-success text-center" role="alert">
+          ¡BASE SUBIDA CON ÉXITO!
+        </div>
+      <?php }else if($_GET['id'] == 2){ ?>
+        <br>
+        <div class="alert alert-danger text-center" role="alert">
+          ¡ERROR EN SUBIDA, FAVOR VERIFIQUE EL ARCHIVO!
+        </div>
+      <?php } } ?>
+      
+      <h1 class="text-center">Subir Inventario</h1>
+
       <form action='../controllers/importe_base.php' method='post' enctype="multipart/form-data">
         <div class="card">
           <div class="card-body">

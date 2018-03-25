@@ -23,54 +23,53 @@
 
         switch (strtolower($fecha[1])) {
             case 'ene.':
-            $mes = 1;
-            break;
+              $mes = 1;
+              break;
             case 'feb.':
-            $mes = 2;
-            break;
+              $mes = 2;
+              break;
             case 'mar.':
-            $mes = 3;
-            break;
+              $mes = 3;
+              break;
             case 'abr.':
-            $mes = 4;
-            break;
+              $mes = 4;
+              break;
             case 'may.':
-            $mes = 5;
-            break;
+              $mes = 5;
+              break;
             case 'jun.':
-            $mes = 6;
-            break;
+              $mes = 6;
+              break;
             case 'jul.':
-            $mes = 7;
-            break;
+              $mes = 7;
+              break;
             case 'ago.':
-            $mes = 8;
-            break;
+              $mes = 8;
+              break;
             case 'sep.':
-            $mes = 9;
-            break;
+              $mes = 9;
+              break;
             case 'oct.':
-            $mes = 10;
-            break;
+              $mes = 10;
+              break;
             case 'nov.':
-            $mes = 11;
-            break;
+              $mes = 11;
+              break;
             case 'dic.':
-            $mes = 12;
-            break;
+              $mes = 12;
+              break;
             case 'jan.':
-            $mes = 1;
-            break;
+              $mes = 1;
+              break;
             case 'apr.':
-            $mes = 4;
-            break;
+              $mes = 4;
+              break;
             case 'aug.':
-            $mes = 8;
-            break;
+              $mes = 8;
+              break;
             case 'dec.':
-            $mes = 12;
-            break;
-
+              $mes = 12;
+              break;
           default:
             $mes = date('m');
             break;
@@ -83,9 +82,12 @@
       }
       # Cerramos la lectura del archivo "abrir archivo" con un "cerrar archivo"
       fclose($handle);
+      Header('Location: ../controllers/subir_archivos.php?id=1');
     } else {
        # Si aparece esto es posible que el archivo no tenga el formato adecuado, inclusive cuando es cvs, revisarlo para
        # ver si esta separado por " , "
-        echo "Archivo invalido!";
+       Header('Location: ../controllers/subir_archivos.php?id=2');
     }
+  }else{
+    Header('Location: salir.php');
   }
