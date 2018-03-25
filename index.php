@@ -1,51 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>LOGIN PILLIN</title>
-	<meta charset="UTF-8">
-	<meta name="viewsport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="views/public/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="views/public/css/main.css">
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 	<title>Inicio de Sesión</title>
 	<link rel="stylesheet" href="views/public/css/bootstrap.min.css">
-</head>
-<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+ <body>
+	<div class="page-header">
+		<h1 class="text-center">Inicio de Sesión</h1>
+	</div>
+<div class="container">
+	<hr>
+	<form action="controllers/validarUsuario.php" method="POST">
+		<br>
+		<br>
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="views/images/img-01.png" alt="IMG">
+		<!-- <div class="col-md-6 col-sm-12">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">DESDE</span>
 				</div>
+				<input type="text" class="form-control calendar" id="desde">
+			</div>
+		</div> -->
 
-				<form class="login100-form validate-form" action="controllers/validarUsuario.php" method="POST">
-					<span class="login100-form-title">
-						INVENTARIO PILLIN
-					</span>
 
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="user" placeholder="Usuario" required>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
+		<div class="row justify-content-md-center justify-content-sm-center">
+			<div class="col-md-4 col-sm-11">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">Usuario</span>
 					</div>
+					<input class="form-control" type="text" id="user" name="user" placeholder="Usuario" required>
+				</div>
+			</div>
+		</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Debe indicar la contraseña">
-						<input class="input100" type="password" name="pass" placeholder="Contraseña" required>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
+		<div class="row justify-content-md-center justify-content-sm-center">
+			<div class="col-md-4 col-sm-11">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">Contraseña</span>
 					</div>
+					<input class="form-control" type="password" name="pass" id="pass" placeholder="Contraseña" required>
+				</div>
+			</div>
+		</div>
 
-					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">
-							INGRESAR
-						</button>
-					</div>
-				</form>
+		<div class="row justify-content-md-center justify-content-sm-center">
+			<div class="col-md-4 col-sm-11 mb-3">
+					<button type="submit" class="btn btn-primary form-control">Ingresar</button>
+			</div>
+		</div>
+	</form>
+
+<?php
+	if(isset($_GET['id'])){
+	if($_GET['id'] == 1){ ?>
+	<div class="row justify-content-md-center justify-content-sm-center">
+		<div class="col-md-6 col-sm-11 text-center">
+			<div class="alert alert-danger" role="alert">
+				¡USUARIO Y/O CONTRASEÑA INCORRECTO!
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+	<?php } } ?>
+</div>
+	<script src="views/public/js/jquery-3.2.1.slim.min.js"></script>
+	<script src="views/public/js/bootstrap.min.js"></script>
+ </body>
+ </html>

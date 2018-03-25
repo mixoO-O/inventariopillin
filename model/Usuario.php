@@ -34,14 +34,14 @@
       $users = [];
       $man = new Mantenedor();
 
-      $sql = "SELECT id, usuario
+      $sql = "SELECT id, nombre
               FROM usuarios";
 
       $exe = $man->free_query($sql);
 
       $i = 0;
       while($row = mysqli_fetch_assoc($exe)){
-        $users[$i] = ['id' => $row['id'], 'nombre' => $row['usuario']];
+        $users[$i] = ['id' => $row['id'], 'nombre' => $row['nombre']];
         $i++;
       }
 

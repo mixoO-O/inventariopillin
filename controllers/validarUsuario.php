@@ -16,8 +16,8 @@
 
       Header('Location: home.php');
     }else{
-      Header('Location: salir.php');
+      Header('Location: ../index.php?id=1');
     }
   }else{
-    Header('Location: salir.php');
+    Header('Location: ../index.php?id=1');
   }
