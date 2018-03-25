@@ -49,35 +49,4 @@
 			$this->close_connection();
 			return $exe;
 		}
-
-		#######################################
-		# FUNCIONES VARIAS
-
-		function obtenerIPCliente(){
-		  if( $_SERVER['HTTP_X_FORWARDED_FOR'] != ''){
-		    $ip = (!empty($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : ((!empty($_ENV['REMOTE_ADDR'])) ? $_ENV['REMOTE_ADDR'] : "Desconocido");
-			$entradasL = split('[, ]', $_SERVER['HTTP_X_FORWARDED_FOR']);
-			reset($entradasL);
-
-			while (list(, $entradaActual) = each($entradasL)){
-				$entradaActual = trim($entradaActual);
-				if(preg_match("/^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)/", $entradaActual, $listaIPs)){
-					$ipPrivada = array('/^0\./', '/^127\.0\.0\.1/', '/^192\.168\..*/', '/^172\.((1[6-9])|(2[0-9])|(3[0-1]))\..*/', '/^10\..*/');
-					$ipEncontrada = preg_replace($ipPrivada, $ip, $listaIPs[1]);
-
-					if ($ip != $ipEncontrada) {
-						$ip = $ipEncontrada;
-						break;
-					}
-				}
-			}
-
-		  } else {
-			$ip = (!empty($_SERVER['REMOTE_ADDR'])) ? $_SERVER['REMOTE_ADDR'] : (( !empty($_ENV['REMOTE_ADDR'])) ? $_ENV['REMOTE_ADDR'] : "Desconocido");
-		  }
-		  return $ip;
-		}
-
-
-
 	}

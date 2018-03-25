@@ -20,7 +20,6 @@
         $data[$i] = ['id' => $row['id'], 'nombre' => $row['nombre']];
         $i++;
       }
-
       return $data;
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- <html lang="en">
+ <html lang="es">
  <head>
  	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,16 +17,6 @@
 	<form action="controllers/validarUsuario.php" method="POST">
 		<br>
 		<br>
-
-		<!-- <div class="col-md-6 col-sm-12">
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text">DESDE</span>
-				</div>
-				<input type="text" class="form-control calendar" id="desde">
-			</div>
-		</div> -->
-
 
 		<div class="row justify-content-md-center justify-content-sm-center">
 			<div class="col-md-4 col-sm-11">
