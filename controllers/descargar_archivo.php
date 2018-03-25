@@ -2,7 +2,7 @@
   session_start();
 
   # Validar si la sesión ha sido creada
-  if(isset($_SESSION['user']) && isset($_SESSION['id']) && $_SESSION['rank'] == 1){
+  if(isset($_SESSION['user']) && isset($_SESSION['id']) && $_SESSION['rank'] == 2){
     # Incluir menú
     require_once('menu.php');
 

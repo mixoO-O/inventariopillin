@@ -15,7 +15,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown ml-auto">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?=$_SESSION['user']?>
+          <?=strtoupper($_SESSION['user'])?>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="../controllers/salir.php">Cerrar Sesión</a>
