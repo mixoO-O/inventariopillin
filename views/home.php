@@ -17,7 +17,7 @@
         <h1 class="cover-heading">¡Bienvenido!</h1>
         <p class="lead">Para subir tus archivos, guíate con la barra de navegación que se encuentra arriba del todo o en el siguiente botón.</p>
         <p class="lead">
-          <a href="../controllers/subir_archivos.php" class="btn btn-lg btn-secondary">Llévame</a>
+          <a href="../controllers/subir_archivos.php" class="btn btn-lg btn-outline-secondary">Llévame</a>
         </p>
       </main>
     </div>
