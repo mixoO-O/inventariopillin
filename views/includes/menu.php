@@ -1,30 +1,14 @@
 <nav class="navbar header-navbar navbar-expand-lg navbar-dark bg-dark">
-<<<<<<< HEAD
-  <a class="navbar-brand" href="../controllers/home.php">Pillin</a>
-=======
   <a class="navbar-brand" href="../controllers/home.php">PILLIN</a>
->>>>>>> 754b04769b6c6f698c041c02da3d020dcce325f0
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-<<<<<<< HEAD
-      <?php foreach ($menu as $key => $value) { ?>
-        <li class="nav-item">
-          <a class="nav-link" href="<?=$value['link']?>"><?=$value['nombre']?></a>
-=======
-      <!--  if($_SESSION['rank']>0) {
-        <li class="nav-item">
-          <a class="nav-link" href="../views/descargar_archivo.php">Descargar Archivo</a>
-        </li>
-       } -->
-
       <?php foreach ($menu as $value) { ?>
         <li class="nav-item">
           <a class="nav-link" href="<?=$value['link']?>"><?=strtoupper($value['nombre'])?></a>
->>>>>>> 754b04769b6c6f698c041c02da3d020dcce325f0
         </li>
       <?php } ?>
     </ul>

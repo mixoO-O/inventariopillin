@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  if($_SESSION['rank'] == 1){
+  if($_SESSION['rank'] == 2){
     if($_GET){
       $desde = $_GET['desde'];
       $hasta = $_GET['hasta'];
