@@ -22,7 +22,7 @@
 <body>
   <header>
     <?php require_once('../views/includes/menu.php'); ?>
-    <h1 class="text-center">Descargar Inventario</h1>
+    <h1 class="text-center">Verificar Inventario</h1>
   </header>
 
   <section class="container">
