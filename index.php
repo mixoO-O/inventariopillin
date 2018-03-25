@@ -4,9 +4,9 @@
 	<title>Login V1</title>
 	<meta charset="UTF-8">
 	<meta name="viewsport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="views/css/util.css">
-	<link rel="stylesheet" type="text/css" href="views/css/main.css">
+	<link rel="stylesheet" type="text/css" href="views/public/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="views/public/css/main.css">
+	<link rel="stylesheet" href="views/public/css/bootstrap.min.css">
 </head>
 <body>
 

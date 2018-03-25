@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Descargar Inventario</title>
+  <title>Reporte Inventario</title>
 
   <link rel="stylesheet" href="../views/public/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../views/public/css/font-awesome.min.css">
   <link rel="stylesheet" href="../views/public/css/bootstrap-datepicker.css">
   <style>
     .fa-click{
@@ -147,7 +147,7 @@
       </div>
 
       <div class="card-footer text-muted text-center">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ver">VER</button>
+        <button type="button" class="btn btn-primary" id="btnVer">VER</button>
         <button type="button" class="btn btn-success" id="btnDescargar">DESCARGAR</button>
       </div>
     </div>
@@ -162,50 +162,16 @@
             </button>
           </div>
           <div class="modal-body">
-            <table class="table">
-              <header>
-                <thead>
-                  <th class="col-md-2">Periodo:</th>
-                  <th class="col-md-2">$fecha</th>
-                  <th class="col-md-2"></th>
-                  <th class="col-md-2"></th>
-                  <th class="col-md-2"></th>
-                  <th class="col-md-2"></th>
-                </thead>
-                <tr>
-                  <td class="col-md-2">Categoría:</td>
-                  <td class="col-md-2">$categorias</td>
-                  <td class="col-md-2"></td>
-                  <td class="col-md-2"></td>
-                  <td class="col-md-2"></td>
-                  <td class="col-md-2"></td>
-                </tr>
-                <tr>
-                  <td class="col-md-2">Tiendas:</td>
-                  <td class="col-md-2">$tiendas</td>
-                  <td class="col-md-2"></td>
-                  <td class="col-md-2"></td>
-                  <td class="col-md-2"></td>
-                  <td class="col-md-2"></td>
-                </tr>
-                <tr>
-                  <td>Usuarios:</td>
-                  <td>$usuarios</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </header>
-              <tr></tr>
-              <tr>
+            <table class="table table-bordered table-condensed table-striped table-hover">
+              <thead class="thead-dark">
                 <th>Codigo Producto</th>
                 <th>Descripción</th>
                 <th>Tienda</th>
                 <th>Fecha</th>
                 <th>Usuario</th>
                 <th>Total Uds</th>
-              </tr>
+              </thead>
+              <tbody id="cuerpo_tabla"></tbody>
             </table>
           </div>
           <div class="modal-footer">
@@ -217,17 +183,99 @@
 
   </section>
 
-  <script src="../views/public/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="../views/public/js/jquery-3.3.1.min.js"></script>
   <script src="../views/public/js/bootstrap.min.js"></script>
   <script src="../views/public/js/bootstrap-datepicker.js"></script>
   <script src="../views/public/js/bootstrap-datepicker.es.js"></script>
-
-
   <script>
     // Add calendar
     $(".calendar").datepicker({format: 'yyyy-mm-dd', language: 'es', autoclose: true});
 
     // Events
+    // Visualizar Datos
+    $("#btnVer").click(function(){
+      var desde = $("#desde").val(),
+          hasta = $("#hasta").val(),
+          categorias_id = "",
+          tiendas_id = "",
+          usuarios_id = "";
+
+      $('#categorias_seleccionadas li').each(function(){
+        let id = $(this).attr('id').split("_");
+        categorias_id += id[2] + ",";
+      });
+
+      $('#tiendas_seleccionadas li').each(function(){
+        let id = $(this).attr('id').split("_");
+        tiendas_id += id[2] + ",";
+      });
+
+      $('#usuarios_seleccionados li').each(function(){
+        let id = $(this).attr('id').split("_");
+        usuarios_id += id[2] + ",";
+      });
+
+      $.post("ver.php",{
+        desde,
+        hasta,
+        categorias_id,
+        tiendas_id,
+        usuarios_id},
+        function(data){
+          $("#cuerpo_tabla").html('');
+          
+          var q = data.length,
+              codigo_tmp = "";
+              total_uds_tmp = "",
+              view = "";
+
+          for (var i = 0; i < q; i++) {
+            if(i == 0){
+              codigo_tmp = data[i].cod_producto;
+              total_uds_tmp = "";
+            }
+
+            if(data[i].cod_producto != codigo_tmp){
+              view = '<tr>'
+                        +'<td>'+codigo_tmp+'</td>'
+                        +'<th>Subtotal</th>'
+                        +'<td colspan="3"></td>'
+                        +'<td>'+total_uds_tmp+'</td>'
+                      +'</tr>';
+
+              $("#cuerpo_tabla").append(view);
+              codigo_tmp = data[i].cod_producto;
+              total_uds_tmp = data[i].unidades;
+            }else{
+              total_uds_tmp += data[i].unidades;
+            }
+            data[i].descripcion = (data[i].descripcion == null) ? "" : data[i].descripcion;
+
+            view = '<tr>'
+                      +'<td>'+data[i].cod_producto+'</td>'
+                      +'<td>'+data[i].descripcion+'</td>'
+                      +'<td>'+data[i].tienda+'</td>'
+                      +'<td>'+data[i].fecha+'</td>'
+                      +'<td>'+data[i].usuario+'</td>'
+                      +'<td>'+data[i].unidades+'</td>'
+                    +'</tr>';
+            $("#cuerpo_tabla").append(view);
+
+            if(i == (q-1)){
+              view = '<tr>'
+                        +'<td>'+codigo_tmp+'</td>'
+                        +'<th>Subtotal</th>'
+                        +'<td colspan="3"></td>'
+                        +'<td>'+total_uds_tmp+'</td>'
+                      +'</tr>';
+              $("#cuerpo_tabla").append(view);
+            }
+          }
+        }, 'json');
+
+      $("#ver").modal('show');
+    });
+
     // Agregar Categoria
     $("#addCategoria").click(function(){
       var id_select = $("#categorias option:selected").val(),
