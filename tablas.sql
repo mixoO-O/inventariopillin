@@ -53,3 +53,8 @@ INSERT INTO `categorias` (`id`, `nombre`) VALUES (NULL, 'Zapatos'), (NULL, 'Zapa
 INSERT INTO `tiendas` (`id`, `nombre`) VALUES (NULL, 'Bata'), (NULL, 'Adidas');
 INSERT INTO `maestra` (`id`, `cod_producto`, `nombre_producto`, `prod_categoria`) VALUES (NULL, '0123456789012', 'Mocasin T41', '1'), (NULL, '0123456789013', 'Zapatilla SuperStar T42', '2');
 INSERT INTO `productos` (`id`, `cod_producto`, `prod_tienda`, `prod_usuario`, `fecha`) VALUES (NULL, '0123456789012', '1', '1', NOW()), (NULL, '0123456789013', '2', '2', NOW());
+
+-- Validar Cod. Producto + datetime
+
+ALTER TABLE `productos` DROP `id`;
+ALTER TABLE `inventariopillin`.`productos` DROP PRIMARY KEY, ADD PRIMARY KEY (`cod_producto`, `fecha`) USING BTREE;
