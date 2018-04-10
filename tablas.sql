@@ -57,4 +57,4 @@ INSERT INTO `productos` (`id`, `cod_producto`, `prod_tienda`, `prod_usuario`, `f
 -- Validar Cod. Producto + datetime
 
 ALTER TABLE `productos` DROP `id`;
-ALTER TABLE `inventariopillin`.`productos` DROP PRIMARY KEY, ADD PRIMARY KEY (`cod_producto`, `fecha`) USING BTREE;
+ALTER TABLE `inventariopillin`.`productos` ADD PRIMARY KEY (`cod_producto`, `fecha`) USING BTREE;
