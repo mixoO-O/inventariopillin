@@ -96,7 +96,7 @@
 
     public function insertarProducto($cod1, $tienda, $usuario, $fecha){
       $man = new Mantenedor();
-      $sql = "INSERT INTO `productos` (`cod_producto`, `prod_tienda`, `prod_usuario`, `fecha`)
+      $sql = "INSERT IGNORE INTO `productos` (`cod_producto`, `prod_tienda`, `prod_usuario`, `fecha`)
                                VALUES ('$cod1', '$tienda', '$usuario', '$fecha')";
       $exe = $man->free_query($sql);
 
